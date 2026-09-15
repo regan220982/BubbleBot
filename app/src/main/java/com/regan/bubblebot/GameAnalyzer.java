@@ -146,7 +146,7 @@ public final class GameAnalyzer {
 
 
  }
- private static List detectBalls(Mat src) {
+ private static List<Ball> detectBalls(Mat src) {
  Mat roi = new Mat(
          src,
          new org.opencv.core.Rect(
@@ -428,9 +428,9 @@ public final class GameAnalyzer {
 
  }
  private static Candidate chooseShot(
-     List balls,
-     Color current
- ) {
+    List<Ball> balls,
+    Color current
+) {
  List<Candidate> all = new ArrayList<>();
 
 
@@ -565,11 +565,11 @@ public final class GameAnalyzer {
 
  }
  private static boolean occupied(
-     double x,
-     double y,
-     List balls,
-     double min
- ) {
+    double x,
+    double y,
+    List<Ball> balls,
+    double min
+) {
  for (Ball b : balls) {
 
 
@@ -589,11 +589,11 @@ public final class GameAnalyzer {
 
  }
  private static double simulateScore(
-     List original,
-     Color color,
-     double px,
-     double py
- ) {
+    List<Ball> original,
+    Color color,
+    double px,
+    double py
+) {
  List<Ball> a = new ArrayList<>();
 
 
@@ -710,8 +710,8 @@ public final class GameAnalyzer {
 
  }
  private static int dropCount(
-     List balls
- ) {
+    List<Ball> balls
+) {
  if (balls.isEmpty()) {
      return 0;
  }
@@ -800,14 +800,14 @@ public final class GameAnalyzer {
 
  }
  private static void addTrajectories(
-     List out,
-     double sx,
-     double sy,
-     double tx,
-     double ty,
-     double score,
-     List balls
- ) {
+    List<Candidate> out,
+    double sx,
+    double sy,
+    double tx,
+    double ty,
+    double score,
+    List<Ball> balls
+) {
  /*
   * Direct path.
   */
@@ -939,14 +939,14 @@ public final class GameAnalyzer {
 
  }
  private static boolean clearPath(
-     double x1,
-     double y1,
-     double x2,
-     double y2,
-     List balls,
-     Double tx,
-     Double ty
- ) {
+    double x1,
+    double y1,
+    double x2,
+    double y2,
+    List<Ball> balls,
+    Double tx,
+    Double ty
+) {
  int steps =
          (int) Math.max(
                  20,
